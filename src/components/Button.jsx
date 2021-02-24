@@ -1,6 +1,6 @@
-const Button = ({ children, type, background, className, dark, ...other }) => {
+const Button = ({ children, variant, background, className, dark, ...other }) => {
   return (
-    <button className={`${type == 'outlined' ? 'outlined' : 'filled'} ${className}`} {...other}>
+    <button className={`${variant == 'outlined' ? 'outlined' : 'filled'} ${className}`} {...other}>
       {children}
       <style jsx>{`
         button {

@@ -24,7 +24,8 @@ const withPreact = (next = {}) =>
 module.exports = withPreact({
   env: {
     SITENAME: process.env.SITENAME,
-    API_URL: process.env.API_URL
+    API_URL: process.env.API_URL,
+    SECRET_COOKIE_PASSWORD: process.env.SECRET_COOKIE_PASSWORD
   },
   generateEtags: true,
   poweredByHeader: false,

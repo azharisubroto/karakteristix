@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import IconButton from '@material-ui/core/IconButton'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import InputLabel from '@material-ui/core/InputLabel'
 import InputAdornment from '@material-ui/core/InputAdornment'
-import FormControl from '@material-ui/core/FormControl'
 import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
 import Button from '@/components/Button'
 import Link from 'next/link'
+import fetchJson from '@/utils/fetchJson'
+import useUser from '@/utils/useUser'
+import { useForm } from 'react-hook-form'
 
 const LoginForm = () => {
+  const { register, handleSubmit, errors } = useForm()
+
   const [values, setValues] = React.useState({
     email: '',
     password: '',
@@ -20,6 +24,14 @@ const LoginForm = () => {
     setValues({ ...values, [prop]: event.target.value })
   }
 
+  const { mutateUser } = useUser({
+    redirectTo: '/',
+    redirectIfFound: true
+  })
+
+  const [errorMsg, setErrorMsg] = useState('')
+  const [loading, setLoading] = useState(false)
+
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword })
   }
@@ -28,41 +40,91 @@ const LoginForm = () => {
     event.preventDefault()
   }
 
+  /**
+   * Handle Login
+   */
+  const onSubmit = async (data) => {
+    console.log(data)
+    setLoading(true)
+
+    const payload = {
+      email: values.email,
+      password: values.password
+    }
+
+    try {
+      await mutateUser(
+        fetchJson('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+      )
+    } catch (error) {
+      //console.error('An unexpected error happened:', error)
+      setErrorMsg('Credentials failed, please check your login details again.')
+      setLoading(false)
+    }
+  }
+
   return (
-    <form className="mt-4">
-      <FormControl fullWidth variant="outlined" className="my-3">
-        <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
-        <OutlinedInput
-          id="outlined-adornment-email"
-          placeholder="budisantoso@karakteristix.com"
-          value={values.email}
-          onChange={handleChange('email')}
-          labelWidth={40}
-        />
-      </FormControl>
-
-      <FormControl fullWidth variant="outlined" className="my-3">
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-        <OutlinedInput
-          id="outlined-adornment-password"
-          type={values.showPassword ? 'text' : 'password'}
-          value={values.password}
-          onChange={handleChange('password')}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end">
-                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-              </IconButton>
-            </InputAdornment>
+    <form noValidate onSubmit={handleSubmit(onSubmit)} className="mt-4">
+      <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
+      <OutlinedInput
+        id="outlined-adornment-email"
+        name="email"
+        labelWidth={0}
+        placeholder="budisantoso@karakteristix.com"
+        onChange={handleChange('email')}
+        inputRef={register({
+          required: 'Email tidak boleh kosong!',
+          pattern: {
+            value: /^\S+@\S+$/i,
+            message: 'You must provide a valid email address!'
           }
-          labelWidth={70}
-        />
-      </FormControl>
+        })}
+        error={!!errors.email}
+        fullWidth
+      />
+      {errors.email && <span className="error">{errors.email.message}</span>}
 
+      <div className="my-4"></div>
+
+      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+      <OutlinedInput
+        id="outlined-adornment-password"
+        type={values.showPassword ? 'text' : 'password'}
+        name="password"
+        placeholder="Password"
+        value={values.password}
+        onChange={handleChange('password')}
+        fullWidth
+        labelWidth={0}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickShowPassword}
+              onMouseDown={handleMouseDownPassword}
+              edge="end">
+              {values.showPassword ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+          </InputAdornment>
+        }
+        inputRef={register({
+          required: {
+            value: true,
+            message: 'Password harus diisi'
+          }
+        })}
+        error={!!errors.password}
+      />
+
+      {errors.password && <span className="error">{errors.password.message}</span>}
+
+      <div className="my-4"></div>
+
+      {/* FORGOT LINK */}
       <div className="mt-1 mb-3">
         Lupa{' '}
         <Link href="/forgot/password" passHref>
@@ -72,8 +134,11 @@ const LoginForm = () => {
         </Link>
       </div>
 
-      <Button type="filled" className="mt-3">
-        LOG IN
+      <div className="my-4">{errorMsg}</div>
+
+      {/* SUBMIT BUTTON */}
+      <Button type="submit" variant="filled" className="mt-3">
+        {loading ? 'LOGGIN IN...' : 'LOG IN'}
       </Button>
     </form>
   )
