@@ -1,19 +1,20 @@
 import withSession from '@/utils/session'
-import services from '@/utils/services'
+import axios from 'axios'
 
 export default withSession(async (req, res) => {
-  const { email, password } = await req.body
-
-  const payload = {
-    email: email,
-    password: password
-  }
+  const user = req.session.get('user')
+  const access_token = user.token.access_token
 
   try {
-    const response = await services.userLogin(payload)
+    const response = await axios.get(process.env.API_URL + '/api/userDetail', {
+      headers: {
+        Accept: 'application/json',
+        Content_Type: 'application/json',
+        Authorization: 'Bearer ' + access_token
+      }
+    })
     const data = await response.data
 
-    // Save user data
     req.session.set('user', data)
     await req.session.save()
 

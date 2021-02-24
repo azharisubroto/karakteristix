@@ -30,5 +30,14 @@ module.exports = withPreact({
   generateEtags: true,
   poweredByHeader: false,
   compress: true,
-  trailingSlash: false
+  trailingSlash: false,
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/login',
+        permanent: true
+      }
+    ]
+  }
 })

@@ -25,7 +25,7 @@ const LoginForm = () => {
   }
 
   const { mutateUser } = useUser({
-    redirectTo: '/',
+    redirectTo: '/dashboard',
     redirectIfFound: true
   })
 
