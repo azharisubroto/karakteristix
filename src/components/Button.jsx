@@ -8,7 +8,7 @@ const Button = ({ children, variant, background, className, dark, ...other }) =>
           background-color: ${background ? background : 'transparent'};
           color: rgb(0, 50, 107);
           border: 1px solid rgb(112, 112, 112);
-          font-weight: 900;
+          font-weight: 600;
           transition: all 0.2s ease;
           letter-spacing: 1px;
           padding: 0.75rem 2.5rem;

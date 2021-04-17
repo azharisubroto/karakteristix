@@ -10,8 +10,18 @@ import Link from 'next/link'
 import fetchJson from '@/utils/fetchJson'
 import useUser from '@/utils/useUser'
 import { useForm } from 'react-hook-form'
+import { makeStyles } from '@material-ui/core/styles'
 
-const LoginForm = () => {
+const useStyles = makeStyles({
+  formControl: {
+    '& input': {
+      padding: '13px 20px'
+    }
+  }
+})
+
+const LoginForm = (props) => {
+  const classes = useStyles(props)
   const { register, handleSubmit, errors } = useForm()
 
   const [values, setValues] = React.useState({
@@ -71,11 +81,13 @@ const LoginForm = () => {
     <form noValidate onSubmit={handleSubmit(onSubmit)} className="mt-4">
       <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
       <OutlinedInput
+        disabled={loading}
         id="outlined-adornment-email"
         name="email"
         labelWidth={0}
         placeholder="budisantoso@karakteristix.com"
         onChange={handleChange('email')}
+        className={classes.formControl}
         inputRef={register({
           required: 'Email tidak boleh kosong!',
           pattern: {
@@ -92,6 +104,7 @@ const LoginForm = () => {
 
       <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
       <OutlinedInput
+        disabled={loading}
         id="outlined-adornment-password"
         type={values.showPassword ? 'text' : 'password'}
         name="password"
@@ -100,6 +113,7 @@ const LoginForm = () => {
         onChange={handleChange('password')}
         fullWidth
         labelWidth={0}
+        className={classes.formControl}
         endAdornment={
           <InputAdornment position="end">
             <IconButton
@@ -138,7 +152,7 @@ const LoginForm = () => {
 
       {/* SUBMIT BUTTON */}
       <Button type="submit" variant="filled" className="mt-3">
-        {loading ? 'LOGGIN IN...' : 'LOG IN'}
+        {loading ? 'LOGGING IN...' : 'LOG IN'}
       </Button>
     </form>
   )

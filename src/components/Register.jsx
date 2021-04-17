@@ -1,5 +1,5 @@
 import SocialLogins from '@/components/SocialLogins'
-import LoginForm from '@/components/LoginForm'
+import RegisterForm from '@/components/RegisterForm'
 import FrontLayout from '@/layouts/FrontLayout'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -10,9 +10,10 @@ export default function Home() {
     <>
       <main>
         <FrontLayout>
+          {/* Form Header */}
           <div className="pt-3 pt-md-4">
             {/* Sign Head */}
-            <FormHead type="login" />
+            <FormHead type="register" />
 
             <Row className="justify-content-between">
               <Col lg="12" className="mt-3">
@@ -25,13 +26,16 @@ export default function Home() {
             </Row>
           </div>
 
-          <LoginForm />
+          {/* Form render */}
+          <div className="pb-4">
+            <RegisterForm />
+          </div>
         </FrontLayout>
       </main>
 
       <style jsx>{`
         main {
-          background: #fff url('../img/signin.png') no-repeat center bottom;
+          background: #fff url('../img/Sign_Up2x.ed04a4fe.png') no-repeat center bottom;
           background-size: 100% auto;
           min-height: 100vh;
         }

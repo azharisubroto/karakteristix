@@ -1,16 +1,16 @@
 import Head from 'next/head'
 import LazyLoad from 'react-lazyload'
-import Login from '@/components/Login'
+import Register from '@/components/Register'
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Welcome | {process.env.SITENAME}</title>
+        <title>Register | {process.env.SITENAME}</title>
       </Head>
 
       <LazyLoad height={528} once offset={100}>
-        <Login />
+        <Register />
       </LazyLoad>
     </>
   )
