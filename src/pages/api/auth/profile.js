@@ -14,8 +14,8 @@ export default withSession(async (req, res) => {
       }
     })
     const data = await response.data
-
-    req.session.set('user', data)
+    // Save user data
+    //req.session.set('user', data)
     await req.session.save()
 
     // Send response
