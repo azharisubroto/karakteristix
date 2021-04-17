@@ -7,5 +7,8 @@ export default {
   },
   userProfile() {
     return AuthApi().get(`/api/userDetail`)
+  },
+  userRegister(params) {
+    return Api.post(`/api/register`, params)
   }
 }

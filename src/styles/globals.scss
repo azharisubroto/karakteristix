@@ -35,6 +35,12 @@ body {
 a {
   color: #00326B;
   text-decoration: none;
+  
+  &.MuiButton-containedPrimary {
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
 .text-primary {
@@ -102,4 +108,5 @@ label {
 .error {
   color: red;
   font-style: italic;
+  font-size: 12px;
 }
