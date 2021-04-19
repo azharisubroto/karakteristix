@@ -37,7 +37,10 @@ const DiagramCards = () => {
       <div className="d-flex justify-content-between align-items-center mb-4">
         <div className="text-24">
           <strong>
-            Total Databases: <span className="text-primary">22</span>
+            Total Databases:{' '}
+            <span className="text-primary">
+              {allanswers.length > 0 && allanswers[allanswers.length - 1].answers.size}
+            </span>
           </strong>
         </div>
 
