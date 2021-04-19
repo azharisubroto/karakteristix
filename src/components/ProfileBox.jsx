@@ -1,7 +1,7 @@
 import useUser from '@/utils/useUser'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import axios from 'axios'
+// import axios from 'axios'
 
 const ProfileBox = ({ className, ...other }) => {
   const { user } = useUser({ redirectTo: '/login' })
@@ -9,14 +9,14 @@ const ProfileBox = ({ className, ...other }) => {
   if (!user) return <>Loading...</>
 
   // Update user
-  const updateuser = async () => {
-    try {
-      const response = await axios.get('/api/auth/profile')
-      console.log(response)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // const updateuser = async () => {
+  //   try {
+  //     const response = await axios.get('/api/auth/profile')
+  //     console.log(response)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   return (
     <div className={`ProfileBox ${className}`} {...other}>
@@ -39,7 +39,7 @@ const ProfileBox = ({ className, ...other }) => {
             </div>
           </div>
 
-          <button onClick={updateuser}>Update user</button>
+          {/* <button onClick={updateuser}>Update user</button> */}
         </Col>
       </Row>
       <style jsx>{`

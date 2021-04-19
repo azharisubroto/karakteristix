@@ -9,6 +9,9 @@ export default {
     return AuthApi().get(`/api/userDetail`)
   },
   userRegister(params) {
-    return Api.post(`/api/register`, params)
+    return Api().post(`/api/register`, params)
+  },
+  getAllAnswers() {
+    return AuthApi().get(`/api/getAllAnswers`)
   }
 }

@@ -1,5 +1,6 @@
 import LogoWhite from '@/components/LogoWhite'
 import ProfileBox from '@/components/ProfileBox'
+import SidebarMenu from '@/components/SidebarMenu'
 
 const Sidebar = () => {
   return (
@@ -11,6 +12,10 @@ const Sidebar = () => {
       {/* Profile Box */}
       <ProfileBox className="mt-4" />
 
+      <div className="divider"></div>
+
+      <SidebarMenu className="mt-4" />
+
       {/* Styling */}
       <style jsx>{`
         aside {
@@ -18,7 +23,6 @@ const Sidebar = () => {
           z-index: 1029;
           position: fixed;
           transition: all 0.3s ease-in-out;
-          box-shadow: 1px 0 20px 0 #3f4d67;
           padding: 25px 0 0 50px;
           width: 380px;
           height: 100vh;
@@ -26,6 +30,12 @@ const Sidebar = () => {
           background: url(/img/sidebar.png) no-repeat center center;
           background-size: cover;
           color: #a9b7d0;
+        }
+
+        .divider {
+          width: 90%;
+          border-bottom: 2px solid #fff;
+          margin-top: 30px;
         }
       `}</style>
     </aside>

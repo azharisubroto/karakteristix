@@ -17,10 +17,16 @@ const MemberLayout = (props) => {
 
           {/* Main Content */}
           <Col md="8" lg="9">
-            {children}
+            <div className="px-md-4 py-md-4">{children}</div>
           </Col>
         </Row>
       </Container>
+
+      <style global jsx>{`
+        body {
+          background: #fbfbfb;
+        }
+      `}</style>
     </>
   )
 }

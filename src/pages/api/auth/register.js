@@ -10,18 +10,12 @@ export default async (req, res) => {
     password: password
   }
 
+  // console.log(payload)
+
   await services.userRegister(payload).then((rex) => {
     console.log(rex)
 
     // Send response
     res.json(rex)
   })
-
-  // try {
-
-  // } catch (error) {
-  //   const { response: fetchResponse } = error
-  //   res.status(fetchResponse?.status || 500).json(error)
-  //   //res.json(error)
-  // }
 }
