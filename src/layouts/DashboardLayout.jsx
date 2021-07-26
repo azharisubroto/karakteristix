@@ -11,7 +11,7 @@ const MemberLayout = (props) => {
       <Container fluid>
         <Row>
           {/* Sidebar */}
-          <Col md="4" lg="3" className="pl-0">
+          <Col md="4" lg="3" className="ps-0">
             <Sidebar />
           </Col>
 

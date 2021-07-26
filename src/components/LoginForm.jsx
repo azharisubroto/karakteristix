@@ -10,7 +10,7 @@ import Link from 'next/link'
 import fetchJson from '@/utils/fetchJson'
 import useUser from '@/utils/useUser'
 import { useForm } from 'react-hook-form'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles({
   formControl: {
@@ -80,11 +80,11 @@ const LoginForm = (props) => {
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)} className="mt-4">
       <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
+      <div className="mb-1"></div>
       <OutlinedInput
         disabled={loading}
         id="outlined-adornment-email"
         name="email"
-        labelWidth={0}
         placeholder="budisantoso@karakteristix.com"
         onChange={handleChange('email')}
         className={classes.formControl}
@@ -112,7 +112,6 @@ const LoginForm = (props) => {
         value={values.password}
         onChange={handleChange('password')}
         fullWidth
-        labelWidth={0}
         className={classes.formControl}
         endAdornment={
           <InputAdornment position="end">

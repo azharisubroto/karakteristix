@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button'
 import fetchJson from '@/utils/fetchJson'
 import useUser from '@/utils/useUser'
 import { useForm } from 'react-hook-form'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/styles'
 import Checkbox from '@material-ui/core/Checkbox'
 import Modal from '@/components/Modal'
 
@@ -160,7 +160,6 @@ const RegisterForm = (props) => {
               disabled={loading}
               id="nama-depan"
               name="first_name"
-              labelWidth={0}
               placeholder="Budi"
               onChange={handleChange('first_name')}
               value={values.first_name}
@@ -180,7 +179,6 @@ const RegisterForm = (props) => {
               disabled={loading}
               id="nama-belakang"
               name="last_name"
-              labelWidth={0}
               placeholder="Santoso"
               onChange={handleChange('last_name')}
               value={values.last_name}
@@ -200,7 +198,6 @@ const RegisterForm = (props) => {
               disabled={loading}
               id="input-email"
               name="email"
-              labelWidth={0}
               placeholder="budisantoso@karakteristix.com"
               className={classes.formControl}
               onChange={handleChange('email')}
@@ -228,7 +225,6 @@ const RegisterForm = (props) => {
               value={values.password}
               onChange={handleChange('password')}
               fullWidth
-              labelWidth={0}
               className={classes.formControl}
               endAdornment={
                 <InputAdornment position="end">

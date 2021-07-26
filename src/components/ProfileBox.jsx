@@ -31,7 +31,7 @@ const ProfileBox = ({ className, ...other }) => {
           <div>{user && <strong className="text-20">{user.data.first_name + ' ' + user.data.last_name}</strong>}</div>
 
           <div className="d-flex mt-3">
-            <div className="mr-4">
+            <div className="me-4">
               Level: <strong>{user.data.level ? user.data.level : '0'}</strong>
             </div>
             <div>

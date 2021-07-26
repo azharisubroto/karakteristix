@@ -13,8 +13,8 @@ const MemberLayout = (props) => {
 
       <Container>
         <Row className="justify-content-between">
-          <Col md="6"></Col>
-          <Col md="6">{children}</Col>
+          <Col md="7"></Col>
+          <Col md="5">{children}</Col>
         </Row>
       </Container>
     </>

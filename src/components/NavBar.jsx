@@ -16,16 +16,18 @@ const NavBar = () => {
               </a>
             </Link>
           </Col>
-          <Col md="3" className="text-right">
-            <Link href="/register" passHref>
-              <a>
-                <Button size="large" variant="outlined" color="secondary" style={{ borderRadius: 90 }}>
-                  <span className="d-block px-4 text-primary">
-                    <strong>SIGN UP</strong>
-                  </span>
-                </Button>
-              </a>
-            </Link>
+          <Col md="3" className="text-end">
+            <div className="d-flex justify-content-end">
+              <Link href="/register" passHref>
+                <a>
+                  <Button size="large" variant="outlined" color="secondary" style={{ borderRadius: 90 }}>
+                    <span className="d-block px-4 text-primary">
+                      <strong>SIGN UP</strong>
+                    </span>
+                  </Button>
+                </a>
+              </Link>
+            </div>
           </Col>
         </Row>
       </Container>

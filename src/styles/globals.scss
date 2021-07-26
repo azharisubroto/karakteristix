@@ -71,6 +71,10 @@ label {
   letter-spacing: 1px!important;
 }
 
+h1, h2, h3, h4, h5 {
+  margin-top: 0
+}
+
 /* font-size by number */
 @for $i from 5 through 90 {
   .text-#{$i},

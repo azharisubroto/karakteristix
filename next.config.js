@@ -1,3 +1,5 @@
+const withPWA = require('next-pwa')
+
 const withPreact = (next = {}) =>
   Object.assign({}, next, {
     webpack(config, options) {
@@ -21,23 +23,37 @@ const withPreact = (next = {}) =>
     }
   })
 
-module.exports = withPreact({
-  env: {
-    SITENAME: process.env.SITENAME,
-    API_URL: process.env.API_URL,
-    SECRET_COOKIE_PASSWORD: process.env.SECRET_COOKIE_PASSWORD
-  },
-  generateEtags: true,
-  poweredByHeader: false,
-  compress: true,
-  trailingSlash: false,
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/login',
-        permanent: true
-      }
-    ]
-  }
-})
+module.exports = withPWA(
+  withPreact({
+    env: {
+      SITENAME: process.env.SITENAME,
+      API_URL: process.env.API_URL,
+      SECRET_COOKIE_PASSWORD: process.env.SECRET_COOKIE_PASSWORD
+    },
+    eslint: {
+      ignoreDuringBuilds: true
+    },
+    images: {
+      domains: ['karakteristix.com']
+    },
+    pwa: {
+      disable: process.env.NODE_ENV === 'development',
+      dest: 'public',
+      register: true,
+      scope: '/'
+    },
+    generateEtags: true,
+    poweredByHeader: false,
+    compress: true,
+    trailingSlash: false,
+    async redirects() {
+      return [
+        {
+          source: '/',
+          destination: '/login',
+          permanent: true
+        }
+      ]
+    }
+  })
+)
