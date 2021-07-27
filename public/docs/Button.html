@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> exports</title>
+  <title> Button</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -68,9 +68,13 @@
             id="sidebarNav"
         >
             
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="module.exports.html">exports</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="Button.html">Button</a></li><li><a href="Card.html">Card</a></li></ul></div>
                 
             </nav>
         </div>
@@ -78,7 +82,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Components</p>
-                    <h1>exports</h1>
+                    <h1>Button</h1>
                 </header>
                 
 
@@ -90,7 +94,7 @@
 <header>
     
         <h2>
-            &ltexports <i>children</i> <i>headerText</i> /&gt
+            &ltButton <i>background</i> <i>children</i> <i>className</i> <i>dark</i> <i>variant</i> /&gt
         </h2>
         
     
@@ -110,12 +114,12 @@
 
 
     
-    <h4 class="name" id="exports">
-        <a class="href-link" href="#exports">#</a>
+    <h4 class="name" id="Button">
+        <a class="href-link" href="#Button">#</a>
         
         <span class="code-name">
             
-                &ltexports <i>children</i> <i>headerText</i> /&gt
+                &ltButton <i>background</i> <i>children</i> <i>className</i> <i>dark</i> <i>variant</i> /&gt
             
         </span>
     </h4>
@@ -124,8 +128,7 @@
     
     
     <div class="description">
-        <p>Main Card Component</p>
-<p>It will render a card component with optional heading text.</p>
+        <p>It will render button component</p>
     </div>
     
 
@@ -153,23 +156,56 @@
     <tbody>
     
           <tr class="deep-level-0">
-            <td class="name"><code>children</code></td>
+            <td class="name"><code>background</code></td>
             <td>
-              node
+              string
             </td>
             <td>No</td>
-            <td>Content of the card.</td>
+            <td>Button color background</td>
             <td></td>
           </tr>
           
     
           <tr class="deep-level-0">
-            <td class="name"><code>headerText</code></td>
+            <td class="name"><code>children</code></td>
+            <td>
+              node
+            </td>
+            <td>No</td>
+            <td>Button label</td>
+            <td></td>
+          </tr>
+          
+    
+          <tr class="deep-level-0">
+            <td class="name"><code>className</code></td>
             <td>
               string
             </td>
             <td>No</td>
-            <td>Card title.</td>
+            <td>Add extra css classes</td>
+            <td></td>
+          </tr>
+          
+    
+          <tr class="deep-level-0">
+            <td class="name"><code>dark</code></td>
+            <td>
+              bool
+            </td>
+            <td>No</td>
+            <td>Is the background dark?</td>
+            <td></td>
+          </tr>
+          
+    
+          <tr class="deep-level-0">
+            <td class="name"><code>variant</code></td>
+            <td>
+              enum
+            </td>
+            <td>No</td>
+            <td>Variant of the button</td>
             <td></td>
           </tr>
           
@@ -218,9 +254,9 @@
 
     
         <p class="tag-source">
-            <a href="Card.jsx.html" class="button">View Source</a>
+            <a href="Button.jsx.html" class="button">View Source</a>
             <span>
-                <a href="Card.jsx.html">Card.jsx</a>, <a href="Card.jsx.html#line77">line 77</a>
+                <a href="Button.jsx.html">Button.jsx</a>, <a href="Button.jsx.html#line11">line 11</a>
             </span>
         </p>
     
@@ -243,37 +279,10 @@
 
 
 
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'><p>Returns React JSX Element</p></div>
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<span class="param-type">JSX.Element</span>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
-
 
 
 
     <h5>Example</h5>
-    
-        <p class="code-caption">Basic</p>
     
     
         
@@ -282,7 +291,7 @@
 
 <script>
   ReactDOM.render(ReactWrapper({
-    example: "const cardtitle = 'My card heading'\rreturn (\r  <Card headerText={cardtitle}>Some content</Card>\r)",
+    example: "return (\r  <Button>My Button</Button>\r)",
     uniqId: "component0",
   }), document.getElementById('component0'));
 </script>
@@ -344,6 +353,8 @@
 <script src="scripts/app.min.js"></script>
 <script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
 
 </body>
 </html>

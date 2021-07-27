@@ -68,9 +68,13 @@
             id="sidebarNav"
         >
             
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="Card.html">Card</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="Button.html">Button</a></li><li><a href="Card.html">Card</a></li></ul></div>
                 
             </nav>
         </div>
@@ -105,6 +109,11 @@
 
     <section>
         <article><h2>Getting Started</h2>
+<p>Install depedencies</p>
+<pre class="prettyprint source lang-bash"><code>npm install
+#or
+yarn install
+</code></pre>
 <p>First, run the development server:</p>
 <pre class="prettyprint source lang-bash"><code>npm run dev
 # or
@@ -141,6 +150,8 @@ SECRET_COOKIE_PASSWORD=YOUR_COOKIES_PASSWORD_32_CHARACTERS
 <script src="scripts/app.min.js"></script>
 <script>PR.prettyPrint();</script>
 <script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
 
 </body>
 </html>

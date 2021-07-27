@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> DiagramCards.jsx</title>
+  <title> Button.jsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -84,7 +84,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>DiagramCards.jsx</h1>
+                    <h1>Button.jsx</h1>
                 </header>
                 
 
@@ -93,79 +93,80 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Card from '@/components/Card'
-import fetchJson from '@/utils/fetchJson'
-import dynamic from 'next/dynamic'
-import Button from '@/components/Button'
-const ChartCard = dynamic(() => import('@/components/ChartCard'), { ssr: false })
+            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
 
-const DiagramCards = () => {
-  const [allanswers, setAllanswers] = React.useState([])
-
-  // did mount
-  React.useEffect(() => {
-    getAllAnswers()
-  }, [])
-
-  /**
-   * Get Answers
-   */
-  const getAllAnswers = async () => {
-    try {
-      const res = await fetchJson('/api/getAllAnswers', {
-        method: 'GET'
-      })
-      console.log(res)
-      if (res.success === true) {
-        setAllanswers(res.data[0])
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
+/**
+ * It will render button component
+ * @component
+ * @example
+ * return (
+ *   &lt;Button>My Button&lt;/Button>
+ * )
+ */
+const Button = ({ children, variant, background, className, dark, ...other }) => {
   return (
-    &lt;>
-      &lt;div className="d-flex justify-content-between align-items-center mb-4">
-        &lt;div className="text-24">
-          &lt;strong>
-            Total Databases:{' '}
-            &lt;span className="text-primary">
-              {allanswers.length > 0 &amp;&amp; allanswers[allanswers.length - 1].answers.size}
-            &lt;/span>
-          &lt;/strong>
-        &lt;/div>
+    &lt;button className={`${variant == 'outlined' ? 'outlined' : 'filled'} ${className}`} {...other}>
+      {children}
+      &lt;style jsx>{`
+        button {
+          color: ${dark ? '#fff' : '#fff'};
+          background-color: ${background ? background : 'transparent'};
+          color: rgb(0, 50, 107);
+          border: 1px solid rgb(112, 112, 112);
+          font-weight: 600;
+          transition: all 0.2s ease;
+          letter-spacing: 1px;
+          padding: 0.75rem 2.5rem;
+          border-radius: 90px;
 
-        &lt;div>
-          &lt;Button variant="contained" color="primary" size="large">
-            Export to Excel
-          &lt;/Button>
-        &lt;/div>
-      &lt;/div>
-      &lt;Row>
-        {allanswers.length > 0 &amp;&amp;
-          allanswers.map((item, i) => {
-            if (i !== allanswers.length - 1) {
-              return (
-                &lt;Col lg={6} key={`question-${i}`} className="pb-5">
-                  &lt;Card headerText={item.question}>
-                    &lt;ChartCard object={item} />
-                  &lt;/Card>
-                &lt;/Col>
-              )
-            }
-          })}
-      &lt;/Row>
+          &amp;:hover {
+            box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.16);
+          }
 
-      {/* &lt;pre>{JSON.stringify(allanswers, null, 2)}&lt;/pre> */}
-    &lt;/>
+          &amp;.outlined {
+            background-color: transparent;
+            color: rgb(0, 50, 107);
+            border: 1px solid rgb(112, 112, 112);
+            text-transform: uppercase;
+            line-height: 1;
+          }
+
+          &amp;.filled {
+            background: #00326b !important;
+            color: white !important;
+            text-transform: uppercase;
+            border: none;
+          }
+        }
+      `}&lt;/style>
+    &lt;/button>
   )
 }
 
-export default DiagramCards
+Button.propTypes = {
+  /**
+   * Button color background
+   */
+  background: PropTypes.string,
+  /**
+   * Button label
+   */
+  children: PropTypes.node,
+  /**
+   * Add extra css classes
+   */
+  className: PropTypes.string,
+  /**
+   * Is the background dark?
+   */
+  dark: PropTypes.bool,
+  /**
+   * Variant of the button
+   */
+  variant: PropTypes.oneOf(['outlined', 'filled'])
+}
+
+export default Button
 </code></pre>
         </article>
     </section>

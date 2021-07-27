@@ -1,4 +1,13 @@
 import PropTypes from 'prop-types'
+
+/**
+ * It will render button component
+ * @component
+ * @example
+ * return (
+ *   <Button>My Button</Button>
+ * )
+ */
 const Button = ({ children, variant, background, className, dark, ...other }) => {
   return (
     <button className={`${variant == 'outlined' ? 'outlined' : 'filled'} ${className}`} {...other}>

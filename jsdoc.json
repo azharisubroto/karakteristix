@@ -1,0 +1,34 @@
+{
+  "tags": {
+    "allowUnknownTags": ["component"],
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "source": {
+    "include": ["./src/components", "./src/layouts"],
+    "includePattern": "\\.(jsx|js|ts|tsx)$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": ["plugins/markdown", "better-docs/component"],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "search": true,
+    "better-docs": {
+      "name": "Karakteristix Documentation",
+      "component": {
+        "entry": [
+          "import 'bootstrap/dist/css/bootstrap-grid.min.css'"
+        ],
+        "wrapper": "./src/utils/wrapper-components.js"
+      }
+    }
+  },
+  "opts": {
+    "encoding": "utf8",
+    "destination": "public/docs/",
+    "recurse": true,
+    "verbose": true,
+    "readme": "README.md",
+    "template": "better-docs"
+  }
+}

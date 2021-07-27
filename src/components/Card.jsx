@@ -7,6 +7,11 @@ import MuiCard from '@material-ui/core/Card'
  *
  * It will render a card component with optional heading text.
  * @component
+ * @example
+ * const text = 'some example text'
+ * return (
+ *   <Card headerText={text}>The content</Card>
+ * )
  */
 const Card = (props) => {
   const { headerText, children, ...others } = props

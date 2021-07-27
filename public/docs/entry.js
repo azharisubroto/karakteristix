@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap-grid.min.css'
       import ReactDOM from "react-dom";
 
 
-      import ReactWrapper from '../../node_modules/better-docs/lib/react-wrapper.js';
+      import ReactWrapper from '../../better-docs/lib/react-wrapper.js';
 
       window.React = React;
 
@@ -28,5 +28,8 @@ import 'bootstrap/dist/css/bootstrap-grid.min.css'
 
       window._CustomWrapper = _CustomWrapper;
 
-      import Component0 from '../../src/components/Card.jsx';
-reactComponents['Card'] = Component0;
+      import Component0 from '../../src/components/Button.jsx';
+reactComponents['Button'] = Component0;
+
+import Component1 from '../../src/components/Card.jsx';
+reactComponents['Card'] = Component1;
