@@ -1,0 +1,3 @@
+[submodule "better-docs"]
+	path = better-docs
+	url = https://github.com/azharisubroto/better-docs.git
