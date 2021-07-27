@@ -79,7 +79,7 @@ const RegisterForm = (props) => {
     }
 
     try {
-      await fetchJson(`${process.env.API_URL}/api/register`, {
+      await fetchJson(`/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 const Button = ({ children, variant, background, className, dark, ...other }) => {
   return (
     <button className={`${variant == 'outlined' ? 'outlined' : 'filled'} ${className}`} {...other}>
@@ -36,6 +37,29 @@ const Button = ({ children, variant, background, className, dark, ...other }) =>
       `}</style>
     </button>
   )
+}
+
+Button.propTypes = {
+  /**
+   * Button color background
+   */
+  background: PropTypes.string,
+  /**
+   * Button label
+   */
+  children: PropTypes.node,
+  /**
+   * Add extra css classes
+   */
+  className: PropTypes.string,
+  /**
+   * Is the background dark?
+   */
+  dark: PropTypes.bool,
+  /**
+   * Variant of the button
+   */
+  variant: PropTypes.oneOf(['outlined', 'filled'])
 }
 
 export default Button

@@ -1,7 +1,17 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import MuiCard from '@material-ui/core/Card'
-const Card = ({ headerText, children }) => {
+
+/**
+ * Main Card Component
+ *
+ * It will render a card component with optional heading text.
+ * @component
+ */
+const Card = (props) => {
+  const { headerText, children, ...others } = props
   return (
-    <MuiCard>
+    <MuiCard {...others}>
       {headerText && (
         <div className="kx-card-header">
           <h5>{headerText}</h5>
@@ -49,6 +59,13 @@ const Card = ({ headerText, children }) => {
       `}</style>
     </MuiCard>
   )
+}
+
+Card.propTypes = {
+  /** Content of the card. */
+  children: PropTypes.node,
+  /** Card title. */
+  headerText: PropTypes.string
 }
 
 export default Card

@@ -1,0 +1,19 @@
+---
+name: Card
+route: /card
+---
+
+import { Playground, Props } from 'docz'
+import { Card } from '../src/components/Card'
+
+# Button
+
+<Props of={Button} />
+
+## Basic usage
+
+<Playground>
+  <Card headerTitle="My Card">
+    lorem ipsum dolor sit amet
+  </Card>
+</Playground>

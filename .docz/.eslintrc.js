@@ -1,0 +1,48 @@
+module.exports = {
+  root: true,
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
+  env: {
+    jest: true,
+    browser: true,
+    amd: true,
+    node: true
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:prettier/recommended'
+  ],
+  rules: {
+    semi: [2, 'never'],
+    'react/react-in-jsx-scope': 'off',
+    'react/no-unescaped-entities': 'off',
+    'react/prop-types': 0,
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton']
+      }
+    ],
+    'prettier/prettier': ['error', { endOfLine: 'auto' }, { usePrettierrc: true }]
+    // 'no-restricted-imports': [
+    //   'error',
+    //   {
+    //     patterns: ['@material-ui/*/*/*', '!@material-ui/core/test-utils/*']
+    //   }
+    // ]
+  }
+}

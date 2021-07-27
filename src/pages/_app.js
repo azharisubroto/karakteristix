@@ -3,44 +3,27 @@ import PropTypes from 'prop-types'
 import Head from 'next/head'
 import fetch from '@/utils/fetchJson'
 import { SWRConfig } from 'swr'
-import { createTheme, ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import createCache from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import '../styles/globals.scss'
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#00326b'
-    },
-    secondary: {
-      main: '#707070'
-    },
-    background: {
-      default: '#fff'
-    }
-  },
-  typography: {
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Open Sans',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"'
-    ].join(',')
-  }
-})
+import theme from '@/utils/theme'
 
 const cache = createCache({ key: 'css' })
 cache.compat = true
 
-function KxApp({ Component, pageProps }) {
+function KxApp(props) {
+  const { Component, pageProps } = props
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side')
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles)
+    }
+  }, [])
+
   const GFont =
     'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap'
 
@@ -59,6 +42,7 @@ function KxApp({ Component, pageProps }) {
           }
         }}>
         <ThemeProvider theme={theme}>
+          <CssBaseline />
           <Component {...pageProps} />
         </ThemeProvider>
       </SWRConfig>

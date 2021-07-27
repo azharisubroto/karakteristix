@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> RegisterForm.jsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Karakteristix Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="Card.html">Card</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>RegisterForm.jsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react'
+import IconButton from '@material-ui/core/IconButton'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
+import InputLabel from '@material-ui/core/InputLabel'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import Visibility from '@material-ui/icons/Visibility'
+import VisibilityOff from '@material-ui/icons/VisibilityOff'
+import Button from '@material-ui/core/Button'
+// import Link from 'next/link'
+import fetchJson from '@/utils/fetchJson'
+import useUser from '@/utils/useUser'
+import { useForm } from 'react-hook-form'
+import { makeStyles } from '@material-ui/styles'
+import Checkbox from '@material-ui/core/Checkbox'
+import Modal from '@/components/Modal'
+
+const useStyles = makeStyles({
+  formControl: {
+    backgroundColor: '#fff',
+    '&amp; input': {
+      padding: '13px 20px'
+    }
+  }
+})
+
+const RegisterForm = (props) => {
+  const classes = useStyles(props)
+  const { register, handleSubmit, errors } = useForm()
+
+  const [values, setValues] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: ''
+  })
+
+  const [modal, setModal] = useState({
+    open: false,
+    heading: 'Congratulatioins',
+    text: 'Check your email to verify the account!',
+    button: {
+      to: '/login',
+      text: 'Close'
+    }
+  })
+
+  const [loading, setLoading] = useState(false)
+  const [agree, setAgree] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+
+  // Handle field changes
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value })
+  }
+
+  useUser({ redirectTo: '/dashboard', redirectIfFound: true })
+
+  // Toggle Password
+  const handleClickShowPassword = () => {
+    const isshow = !showPassword
+    setShowPassword(isshow)
+  }
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault()
+  }
+
+  /**
+   * Handle Login
+   */
+  const onSubmit = async () => {
+    setLoading(true)
+
+    const payload = {
+      first_name: values.first_name,
+      last_name: values.last_name,
+      email: values.email,
+      password: values.password
+    }
+
+    try {
+      await fetchJson(`/api/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then((res) => {
+        console.log(res)
+        if (res.success !== true) {
+          setModal((prevState) => ({
+            ...prevState,
+            open: true,
+            heading: `We're sorry`,
+            text: res.message,
+            button: {
+              to: '#',
+              text: 'Close'
+            }
+          }))
+        } else {
+          setModal({
+            ...modal,
+            open: true,
+            button: {
+              to: '/login',
+              text: 'Login'
+            }
+          })
+        }
+
+        setLoading(false)
+      })
+    } catch (error) {
+      setModal({
+        ...modal,
+        open: true,
+        text: 'An error occured, please try again later',
+        button: {
+          to: '#',
+          text: 'Close'
+        }
+      })
+      setLoading(false)
+    }
+  }
+
+  return (
+    &lt;>
+      {/* Modal Feedback */}
+      &lt;Modal open={modal.open} heading="Congratulations">
+        &lt;div className="px-4 py-4" style={{ borderBottom: '1px solid #dee2e6' }}>
+          {modal.text}
+        &lt;/div>
+        &lt;div className="d-flex align-items-center p-4">
+          &lt;div className="mx-auto">
+            &lt;Button
+              component="a"
+              href={modal.button.to}
+              size="large"
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                setModal({
+                  ...modal,
+                  open: false
+                })
+              }}
+              style={{ borderRadius: 90 }}>
+              &lt;span className="d-block px-4">{modal.button.text}&lt;/span>
+            &lt;/Button>
+          &lt;/div>
+        &lt;/div>
+      &lt;/Modal>
+
+      {/* Form */}
+      &lt;form noValidate onSubmit={handleSubmit(onSubmit)} className="mt-md-4" autoComplete="off">
+        &lt;div className="row">
+          &lt;div className="col-lg-6 pb-4">
+            &lt;InputLabel htmlFor="nama-depan">Nama Depan&lt;/InputLabel>
+            &lt;OutlinedInput
+              disabled={loading}
+              id="nama-depan"
+              name="first_name"
+              placeholder="Budi"
+              onChange={handleChange('first_name')}
+              value={values.first_name}
+              className={classes.formControl}
+              inputRef={register({
+                required: 'Nama depan tidak boleh kosong!'
+              })}
+              error={!!errors.first_name}
+              fullWidth
+            />
+            {errors.first_name &amp;&amp; &lt;span className="error">{errors.first_name.message}&lt;/span>}
+          &lt;/div>
+
+          &lt;div className="col-md-6 pb-4">
+            &lt;InputLabel htmlFor="nama-belakang">Nama Belakang&lt;/InputLabel>
+            &lt;OutlinedInput
+              disabled={loading}
+              id="nama-belakang"
+              name="last_name"
+              placeholder="Santoso"
+              onChange={handleChange('last_name')}
+              value={values.last_name}
+              className={classes.formControl}
+              inputRef={register({
+                required: 'Nama belakang tidak boleh kosong!'
+              })}
+              error={!!errors.last_name}
+              fullWidth
+            />
+            {errors.last_name &amp;&amp; &lt;span className="error">{errors.last_name.message}&lt;/span>}
+          &lt;/div>
+
+          &lt;div className="col-md-6">
+            &lt;InputLabel htmlFor="input-email">Email&lt;/InputLabel>
+            &lt;OutlinedInput
+              disabled={loading}
+              id="input-email"
+              name="email"
+              placeholder="budisantoso@karakteristix.com"
+              className={classes.formControl}
+              onChange={handleChange('email')}
+              inputRef={register({
+                required: 'Email tidak boleh kosong!',
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: 'You must provide a valid email address!'
+                }
+              })}
+              error={!!errors.email}
+              fullWidth
+            />
+            {errors.email &amp;&amp; &lt;span className="error">{errors.email.message}&lt;/span>}
+          &lt;/div>
+
+          &lt;div className="col-md-6">
+            &lt;InputLabel htmlFor="outlined-adornment-password">Password&lt;/InputLabel>
+            &lt;OutlinedInput
+              disabled={loading}
+              id="outlined-adornment-password"
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              placeholder="Password"
+              value={values.password}
+              onChange={handleChange('password')}
+              fullWidth
+              className={classes.formControl}
+              endAdornment={
+                &lt;InputAdornment position="end">
+                  &lt;IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end">
+                    {showPassword ? &lt;Visibility /> : &lt;VisibilityOff />}
+                  &lt;/IconButton>
+                &lt;/InputAdornment>
+              }
+              inputRef={register({
+                required: {
+                  value: true,
+                  message: 'Password harus diisi'
+                }
+              })}
+              error={!!errors.password}
+            />
+            {errors.password &amp;&amp; &lt;span className="error">{errors.password.message}&lt;/span>}
+          &lt;/div>
+        &lt;/div>
+
+        &lt;div className="mt-4 d-flex">
+          &lt;div>
+            &lt;Checkbox
+              inputProps={{ id: 'agree' }}
+              color="primary"
+              checked={agree}
+              onChange={() => {
+                let toggleAgree = !agree
+                setAgree(toggleAgree)
+              }}
+            />
+          &lt;/div>
+          &lt;div>
+            &lt;label htmlFor="agree">
+              &lt;span className="text-grey">Membuat akun berarti Anda menyetujui &lt;/span>
+              &lt;a href="/syarat-dan-ketentuan/">
+                &lt;span style={{ color: '#00326B', fontWeight: '700', marginLeft: 0 }}> Syarat dan ketentuan,&lt;/span>
+              &lt;/a>{' '}
+              &lt;span className="text-grey">serta &lt;/span>
+              &lt;a href="/kebijakan/">
+                &lt;span style={{ color: '#00326B', fontWeight: '700', marginLeft: 0 }}> kebijakan,&lt;/span>
+              &lt;/a>{' '}
+              &lt;span className="text-grey">dan &lt;/span>
+              &lt;a href="/pengaturan-notifikasi/">
+                &lt;span style={{ color: '#00326B', fontWeight: '700', marginLeft: 0 }}>pengaturan notifikasi&lt;/span>
+              &lt;/a>{' '}
+              &lt;span className="text-grey">standar kami.&lt;/span>
+            &lt;/label>
+          &lt;/div>
+        &lt;/div>
+
+        {/* SUBMIT BUTTON */}
+        &lt;Button
+          disableElevation
+          disabled={!agree}
+          color="primary"
+          type="submit"
+          variant="contained"
+          style={{ borderRadius: 90, padding: '12px 25px' }}
+          size="large"
+          className="mt-3">
+          &lt;span className="px-4">
+            &lt;strong>{loading ? 'Loading...' : 'Sign Up'}&lt;/strong>
+          &lt;/span>
+        &lt;/Button>
+      &lt;/form>
+    &lt;/>
+  )
+}
+
+export default RegisterForm
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>
