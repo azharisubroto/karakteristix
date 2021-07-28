@@ -1,3 +1,21 @@
+import PropTypes from 'prop-types'
+
+/**
+ * @classdesc
+ * Component to display page title
+ *
+ * ## Import
+ * ```jsx
+ * import PageTitle from '@/components/PageTitle'
+ * ```
+ * @category UI
+ * @component
+ * @example
+ * return (
+ *  <PageTitle title="Dashboard" />
+ * )
+ * @return {React.ReactElement} - React component
+ */
 const PageTitle = ({ title }) => {
   return (
     <>
@@ -20,6 +38,10 @@ const PageTitle = ({ title }) => {
       `}</style>
     </>
   )
+}
+
+PageTitle.propTypes = {
+  title: PropTypes.string
 }
 
 export default PageTitle

@@ -8,6 +8,10 @@ import SocialLogins from './SocialLogins'
  * @classdesc
  * Component for form Adornment
  *
+ * ## Import
+ * ```jsx
+ * import FormHead from '@/components/FormHead'
+ * ```
  * @category UI
  * @component
  * @example <caption>Sign In</caption>

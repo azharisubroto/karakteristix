@@ -43,3 +43,6 @@ reactComponents['FormHead'] = Component3;
 
 import Component4 from '../../src/components/LoginForm.jsx';
 reactComponents['LoginForm'] = Component4;
+
+import Component5 from '../../src/components/PageTitle.jsx';
+reactComponents['PageTitle'] = Component5;

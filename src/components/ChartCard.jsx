@@ -9,7 +9,7 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart
  *
  * ## Import
  * ```jsx
- * import Card from '@/components/ChartCard'
+ * import ChartCard from '@/components/ChartCard'
  * ```
  *
  * @category UI
