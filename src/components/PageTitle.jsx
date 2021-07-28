@@ -41,6 +41,9 @@ const PageTitle = ({ title }) => {
 }
 
 PageTitle.propTypes = {
+  /**
+   * String to render title text
+   */
   title: PropTypes.string
 }
 
