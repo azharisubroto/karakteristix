@@ -113,11 +113,9 @@
  * return (
  *   &lt;Button variant="outlined">My Button&lt;/Button>
  * )
+ * @return {React.ReactElement} - React component
  */
 const Button = ({ variant, background, className = '', dark, ...props }) => {
-  /**
-   * @return {React.ReactElement} - React component
-   */
   return (
     &lt;button className={`${variant == 'outlined' ? 'outlined' : 'filled'} ${className}`} {...props}>
       {props.children}

@@ -18,11 +18,9 @@ import PropTypes from 'prop-types'
  * return (
  *   <Button variant="outlined">My Button</Button>
  * )
+ * @return {React.ReactElement} - React component
  */
 const Button = ({ variant, background, className = '', dark, ...props }) => {
-  /**
-   * @return {React.ReactElement} - React component
-   */
   return (
     <button className={`${variant == 'outlined' ? 'outlined' : 'filled'} ${className}`} {...props}>
       {props.children}
