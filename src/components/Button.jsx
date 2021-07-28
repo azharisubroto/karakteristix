@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
  * @classdesc
  * ## Import
  * ```jsx
- * import Card from '@/components/Button'
+ * import Button from '@/components/Button'
  * ```
  *
  * @example <caption>Default.</caption>
@@ -19,7 +19,7 @@ import PropTypes from 'prop-types'
  *   <Button variant="outlined">My Button</Button>
  * )
  */
-const Button = ({ variant, background, className, dark, ...props }) => {
+const Button = ({ variant, background, className = '', dark, ...props }) => {
   /**
    * @return {React.ReactElement} - React component
    */

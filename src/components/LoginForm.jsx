@@ -42,6 +42,20 @@ const useStyles = makeStyles({
  */
 const LoginForm = (props) => {
   const classes = useStyles(props)
+
+  /**
+   * @summary An event triggered when user enter wrong email format
+   *
+   * @event LoginForm#validationError
+   * @type {object}
+   * @property {object} errors - An object of error types
+   * @property {string} errors.email - Email is empty or invalid
+   * @property {string} errors.password - Password is empty
+   */
+
+  /**
+   * @fires LoginForm#validationError
+   */
   const { register, handleSubmit, errors } = useForm()
   const router = useRouter()
 
