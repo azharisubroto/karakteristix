@@ -29,7 +29,7 @@ const useStyles = makeStyles({
  *
  * ## Import
  * ```jsx
- * import Card from '@/components/LoginForm'
+ * import LofinForm from '@/components/LoginForm'
  * ```
  *
  * @category UI
