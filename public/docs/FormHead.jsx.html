@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> DiagramCards.jsx</title>
+  <title> FormHead.jsx</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -84,7 +84,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>DiagramCards.jsx</h1>
+                    <h1>FormHead.jsx</h1>
                 </header>
                 
 
@@ -93,79 +93,86 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
+            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+import Link from 'next/link'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Card from '@/components/Card'
-import fetchJson from '@/utils/fetchJson'
-import dynamic from 'next/dynamic'
-import Button from '@/components/Button'
-const ChartCard = dynamic(() => import('@/components/ChartCard'), { ssr: false })
+import SocialLogins from './SocialLogins'
 
-const DiagramCards = () => {
-  const [allanswers, setAllanswers] = React.useState([])
-
-  // did mount
-  React.useEffect(() => {
-    getAllAnswers()
-  }, [])
-
-  /**
-   * Get Answers
-   */
-  const getAllAnswers = async () => {
-    try {
-      const res = await fetchJson('/api/getAllAnswers', {
-        method: 'GET'
-      })
-      console.log(res)
-      if (res.success === true) {
-        setAllanswers(res.data[0])
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
+/**
+ * @classdesc
+ * Component for form Adornment
+ *
+ * @category UI
+ * @component
+ * @example &lt;caption>Sign In&lt;/caption>
+ * return(
+ *  &lt;div className="pb-4" style={{width: '100%'}}>&lt;FormHead type="login" />&lt;/div>
+ * )
+ *
+ * @example &lt;caption>Sign Up&lt;/caption>
+ * return(
+ *  &lt;div className="pb-4" style={{width: '100%'}}>&lt;FormHead type="signup" />&lt;/div>
+ * )
+ * @return {React.ReactElement} - React component
+ */
+const FormHead = (props) => {
+  const { type } = props
   return (
     &lt;>
-      &lt;div className="d-flex justify-content-between align-items-center mb-4">
-        &lt;div className="text-24">
-          &lt;strong>
-            Total Databases:{' '}
-            &lt;span className="text-primary">
-              {allanswers.length > 0 &amp;&amp; allanswers[allanswers.length - 1].answers.size}
-            &lt;/span>
-          &lt;/strong>
+      &lt;div className="d-flex justify-content-between align-items-top pt-md-5">
+        &lt;div>
+          &lt;h1 className="titleSignIn mb-0">{type === 'login' ? 'Sign In' : 'Sign Up'}&lt;/h1>
         &lt;/div>
 
         &lt;div>
-          &lt;Button variant="contained" color="primary" size="large">
-            Export to Excel
-          &lt;/Button>
+          &lt;Link href={`/${type === 'login' ? 'register' : 'login'}`} passHref>
+            &lt;a className="text-14 text-grey">
+              {type === 'login' ? (
+                &lt;span>
+                  Belum punya akun? &lt;br />
+                  &lt;strong className="text-primary">Sign Up&lt;/strong> sekarang.
+                &lt;/span>
+              ) : (
+                &lt;span>
+                  Anda sudah jadi anggota? &lt;br />
+                  &lt;strong className="text-primary">Log In&lt;/strong> di sini.
+                &lt;/span>
+              )}
+            &lt;/a>
+          &lt;/Link>
         &lt;/div>
       &lt;/div>
-      &lt;Row>
-        {allanswers.length > 0 &amp;&amp;
-          allanswers.map((item, i) => {
-            if (i !== allanswers.length - 1) {
-              return (
-                &lt;Col lg={6} key={`question-${i}`} className="pb-5">
-                  &lt;Card headerText={item.question}>
-                    &lt;ChartCard object={item} />
-                  &lt;/Card>
-                &lt;/Col>
-              )
-            }
-          })}
+
+      &lt;Row className="justify-content-between">
+        &lt;Col lg="12" className="mt-3">
+          &lt;SocialLogins />
+        &lt;/Col>
+
+        &lt;Col lg="12" className="mt-4">
+          &lt;div className="text-18 text-gray">Atau gunakan akun emailmu&lt;/div>
+        &lt;/Col>
       &lt;/Row>
 
-      {/* &lt;pre>{JSON.stringify(allanswers, null, 2)}&lt;/pre> */}
+      &lt;style jsx>{`
+        .titleSignIn {
+          font-weight: 700;
+          font-size: 30px;
+          color: #00326b;
+        }
+      `}&lt;/style>
     &lt;/>
   )
 }
 
-export default DiagramCards
+FormHead.propTypes = {
+  /**
+   * Type of login form. &lt;code>login&lt;/code> or &lt;code>signup&lt;/code>
+   */
+  type: PropTypes.oneOf(['login', 'signup']).isRequired
+}
+
+export default FormHead
 </code></pre>
         </article>
     </section>

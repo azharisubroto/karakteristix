@@ -19,7 +19,7 @@
   <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
   <link type="text/css" rel="stylesheet" href="styles/app.min.css">
   <link type="text/css" rel="stylesheet" href="styles/iframe.css">
-  <link type="text/css" rel="stylesheet" href="../globals.css">
+  <link type="text/css" rel="stylesheet" href="">
   <script async defer src="https://buttons.github.io/buttons.js"></script>
 
   
@@ -74,7 +74,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"></div><div class="category"><h2>UI</h2><h3>Components</h3><ul><li><a href="Button.html">Button</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Card">Card</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Events</h3><ul><li><a href="LoginForm.html#event:toggleVisiblePassword">toggleVisiblePassword</a></li></ul></div><div class="category"><h2>UI</h2><h3>Components</h3><ul><li><a href="Button.html">Button</a></li><li><a href="Card.html">Card</a></li><li><a href="ChartCard.html">ChartCard</a></li><li><a href="LoginForm.html">LoginForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FormHead">FormHead</a></li></ul></div>
                 
             </nav>
         </div>
@@ -174,12 +174,12 @@
 
 
     
-    <h4 class="name" id="Card">
-        <a class="href-link" href="#Card">#</a>
+    <h4 class="name" id="FormHead">
+        <a class="href-link" href="#FormHead">#</a>
         
         <span class="code-name">
             
-                Card<span class="signature">()</span><span class="type-signature"> &rarr; {React.ReactElement}</span>
+                FormHead<span class="signature">()</span><span class="type-signature"> &rarr; {React.ReactElement}</span>
             
         </span>
     </h4>
@@ -233,9 +233,9 @@
 
     
         <p class="tag-source">
-            <a href="Card.jsx.html" class="button">View Source</a>
+            <a href="FormHead.jsx.html" class="button">View Source</a>
             <span>
-                <a href="Card.jsx.html">Card.jsx</a>, <a href="Card.jsx.html#line34">line 34</a>
+                <a href="FormHead.jsx.html">FormHead.jsx</a>, <a href="FormHead.jsx.html#line23">line 23</a>
             </span>
         </p>
     
@@ -290,16 +290,16 @@
 
     <h5>Examples</h5>
     
-        <p class="code-caption">Default</p>
+        <p class="code-caption">Sign In</p>
     
     
-        <pre class="prettyprint"><code>const text = 'some example text'return ( &lt;Card headerText={text}> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled &lt;/Card>)</code></pre>
+        <pre class="prettyprint"><code>return( &lt;div className="pb-4" style={{width: '100%'}}>&lt;FormHead type="login" />&lt;/div>)</code></pre>
     
 
-        <p class="code-caption">With Image</p>
+        <p class="code-caption">Sign Up</p>
     
     
-        <pre class="prettyprint"><code>return (  &lt;Card headerText="My Image">    &lt;img src="https://placeimg.com/640/480/any" />  &lt;/Card>)</code></pre>
+        <pre class="prettyprint"><code>return( &lt;div className="pb-4" style={{width: '100%'}}>&lt;FormHead type="signup" />&lt;/div>)</code></pre>
     
 
 

@@ -38,5 +38,8 @@ reactComponents['Card'] = Component1;
 import Component2 from '../../src/components/ChartCard.jsx';
 reactComponents['ChartCard'] = Component2;
 
-import Component3 from '../../src/components/LoginForm.jsx';
-reactComponents['LoginForm'] = Component3;
+import Component3 from '../../src/components/FormHead.jsx';
+reactComponents['FormHead'] = Component3;
+
+import Component4 from '../../src/components/LoginForm.jsx';
+reactComponents['LoginForm'] = Component4;

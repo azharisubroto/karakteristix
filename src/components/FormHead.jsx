@@ -1,8 +1,26 @@
+import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import SocialLogins from '@/components/SocialLogins'
+import SocialLogins from './SocialLogins'
 
+/**
+ * @classdesc
+ * Component for form Adornment
+ *
+ * @category UI
+ * @component
+ * @example <caption>Sign In</caption>
+ * return(
+ *  <div className="pb-4" style={{width: '100%'}}><FormHead type="login" /></div>
+ * )
+ *
+ * @example <caption>Sign Up</caption>
+ * return(
+ *  <div className="pb-4" style={{width: '100%'}}><FormHead type="signup" /></div>
+ * )
+ * @return {React.ReactElement} - React component
+ */
 const FormHead = (props) => {
   const { type } = props
   return (
@@ -18,12 +36,12 @@ const FormHead = (props) => {
               {type === 'login' ? (
                 <span>
                   Belum punya akun? <br />
-                  <b className="text-primary">Sign Up</b> sekarang.
+                  <strong className="text-primary">Sign Up</strong> sekarang.
                 </span>
               ) : (
                 <span>
                   Anda sudah jadi anggota? <br />
-                  <b className="text-primary">Log In</b> di sini.
+                  <strong className="text-primary">Log In</strong> di sini.
                 </span>
               )}
             </a>
@@ -40,8 +58,23 @@ const FormHead = (props) => {
           <div className="text-18 text-gray">Atau gunakan akun emailmu</div>
         </Col>
       </Row>
+
+      <style jsx>{`
+        .titleSignIn {
+          font-weight: 700;
+          font-size: 30px;
+          color: #00326b;
+        }
+      `}</style>
     </>
   )
+}
+
+FormHead.propTypes = {
+  /**
+   * Type of login form. <code>login</code> or <code>signup</code>
+   */
+  type: PropTypes.oneOf(['login', 'signup']).isRequired
 }
 
 export default FormHead
