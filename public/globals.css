@@ -1,0 +1,603 @@
+:root {
+  --color-blue: #00326b;
+  --color-grey: #707070;
+  --color-gray: #f0f0f0;
+  --text-primary: #00326B;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Open Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #888;
+  font-weight: 400;
+  background: #f4f7fa;
+  position: relative;
+  min-height: 100vh;
+}
+
+a {
+  color: #00326B;
+  text-decoration: none;
+}
+
+a.MuiButton-containedPrimary:hover {
+  color: #fff;
+}
+
+.text-primary {
+  color: var(--text-primary) !important;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+label {
+  color: var(--color-blue) !important;
+}
+
+.MuiButtonBase-root {
+  letter-spacing: 1px !important;
+}
+
+h1, h2, h3, h4, h5 {
+  margin-top: 0;
+}
+
+/* font-size by number */
+.text-5,
+*.text-5 {
+  font-size: 5px !important;
+}
+
+.text-6,
+*.text-6 {
+  font-size: 6px !important;
+}
+
+.text-7,
+*.text-7 {
+  font-size: 7px !important;
+}
+
+.text-8,
+*.text-8 {
+  font-size: 8px !important;
+}
+
+.text-9,
+*.text-9 {
+  font-size: 9px !important;
+}
+
+.text-10,
+*.text-10 {
+  font-size: 10px !important;
+}
+
+.text-11,
+*.text-11 {
+  font-size: 11px !important;
+}
+
+.text-12,
+*.text-12 {
+  font-size: 12px !important;
+}
+
+.text-13,
+*.text-13 {
+  font-size: 13px !important;
+}
+
+.text-14,
+*.text-14 {
+  font-size: 14px !important;
+}
+
+.text-15,
+*.text-15 {
+  font-size: 15px !important;
+}
+
+.text-16,
+*.text-16 {
+  font-size: 16px !important;
+}
+
+.text-17,
+*.text-17 {
+  font-size: 17px !important;
+}
+
+.text-18,
+*.text-18 {
+  font-size: 18px !important;
+}
+
+.text-19,
+*.text-19 {
+  font-size: 19px !important;
+}
+
+.text-20,
+*.text-20 {
+  font-size: 20px !important;
+}
+
+.text-21,
+*.text-21 {
+  font-size: 21px !important;
+}
+
+.text-22,
+*.text-22 {
+  font-size: 22px !important;
+}
+
+.text-23,
+*.text-23 {
+  font-size: 23px !important;
+}
+
+.text-24,
+*.text-24 {
+  font-size: 24px !important;
+}
+
+.text-25,
+*.text-25 {
+  font-size: 25px !important;
+}
+
+.text-26,
+*.text-26 {
+  font-size: 26px !important;
+}
+
+.text-27,
+*.text-27 {
+  font-size: 27px !important;
+}
+
+.text-28,
+*.text-28 {
+  font-size: 28px !important;
+}
+
+.text-29,
+*.text-29 {
+  font-size: 29px !important;
+}
+
+.text-30,
+*.text-30 {
+  font-size: 30px !important;
+}
+
+.text-31,
+*.text-31 {
+  font-size: 31px !important;
+}
+
+.text-32,
+*.text-32 {
+  font-size: 32px !important;
+}
+
+.text-33,
+*.text-33 {
+  font-size: 33px !important;
+}
+
+.text-34,
+*.text-34 {
+  font-size: 34px !important;
+}
+
+.text-35,
+*.text-35 {
+  font-size: 35px !important;
+}
+
+.text-36,
+*.text-36 {
+  font-size: 36px !important;
+}
+
+.text-37,
+*.text-37 {
+  font-size: 37px !important;
+}
+
+.text-38,
+*.text-38 {
+  font-size: 38px !important;
+}
+
+.text-39,
+*.text-39 {
+  font-size: 39px !important;
+}
+
+.text-40,
+*.text-40 {
+  font-size: 40px !important;
+}
+
+.text-41,
+*.text-41 {
+  font-size: 41px !important;
+}
+
+.text-42,
+*.text-42 {
+  font-size: 42px !important;
+}
+
+.text-43,
+*.text-43 {
+  font-size: 43px !important;
+}
+
+.text-44,
+*.text-44 {
+  font-size: 44px !important;
+}
+
+.text-45,
+*.text-45 {
+  font-size: 45px !important;
+}
+
+.text-46,
+*.text-46 {
+  font-size: 46px !important;
+}
+
+.text-47,
+*.text-47 {
+  font-size: 47px !important;
+}
+
+.text-48,
+*.text-48 {
+  font-size: 48px !important;
+}
+
+.text-49,
+*.text-49 {
+  font-size: 49px !important;
+}
+
+.text-50,
+*.text-50 {
+  font-size: 50px !important;
+}
+
+.text-51,
+*.text-51 {
+  font-size: 51px !important;
+}
+
+.text-52,
+*.text-52 {
+  font-size: 52px !important;
+}
+
+.text-53,
+*.text-53 {
+  font-size: 53px !important;
+}
+
+.text-54,
+*.text-54 {
+  font-size: 54px !important;
+}
+
+.text-55,
+*.text-55 {
+  font-size: 55px !important;
+}
+
+.text-56,
+*.text-56 {
+  font-size: 56px !important;
+}
+
+.text-57,
+*.text-57 {
+  font-size: 57px !important;
+}
+
+.text-58,
+*.text-58 {
+  font-size: 58px !important;
+}
+
+.text-59,
+*.text-59 {
+  font-size: 59px !important;
+}
+
+.text-60,
+*.text-60 {
+  font-size: 60px !important;
+}
+
+.text-61,
+*.text-61 {
+  font-size: 61px !important;
+}
+
+.text-62,
+*.text-62 {
+  font-size: 62px !important;
+}
+
+.text-63,
+*.text-63 {
+  font-size: 63px !important;
+}
+
+.text-64,
+*.text-64 {
+  font-size: 64px !important;
+}
+
+.text-65,
+*.text-65 {
+  font-size: 65px !important;
+}
+
+.text-66,
+*.text-66 {
+  font-size: 66px !important;
+}
+
+.text-67,
+*.text-67 {
+  font-size: 67px !important;
+}
+
+.text-68,
+*.text-68 {
+  font-size: 68px !important;
+}
+
+.text-69,
+*.text-69 {
+  font-size: 69px !important;
+}
+
+.text-70,
+*.text-70 {
+  font-size: 70px !important;
+}
+
+.text-71,
+*.text-71 {
+  font-size: 71px !important;
+}
+
+.text-72,
+*.text-72 {
+  font-size: 72px !important;
+}
+
+.text-73,
+*.text-73 {
+  font-size: 73px !important;
+}
+
+.text-74,
+*.text-74 {
+  font-size: 74px !important;
+}
+
+.text-75,
+*.text-75 {
+  font-size: 75px !important;
+}
+
+.text-76,
+*.text-76 {
+  font-size: 76px !important;
+}
+
+.text-77,
+*.text-77 {
+  font-size: 77px !important;
+}
+
+.text-78,
+*.text-78 {
+  font-size: 78px !important;
+}
+
+.text-79,
+*.text-79 {
+  font-size: 79px !important;
+}
+
+.text-80,
+*.text-80 {
+  font-size: 80px !important;
+}
+
+.text-81,
+*.text-81 {
+  font-size: 81px !important;
+}
+
+.text-82,
+*.text-82 {
+  font-size: 82px !important;
+}
+
+.text-83,
+*.text-83 {
+  font-size: 83px !important;
+}
+
+.text-84,
+*.text-84 {
+  font-size: 84px !important;
+}
+
+.text-85,
+*.text-85 {
+  font-size: 85px !important;
+}
+
+.text-86,
+*.text-86 {
+  font-size: 86px !important;
+}
+
+.text-87,
+*.text-87 {
+  font-size: 87px !important;
+}
+
+.text-88,
+*.text-88 {
+  font-size: 88px !important;
+}
+
+.text-89,
+*.text-89 {
+  font-size: 89px !important;
+}
+
+.text-90,
+*.text-90 {
+  font-size: 90px !important;
+}
+
+.d-none {
+  display: none;
+}
+
+.text-gray, .text-grey {
+  color: #707070;
+}
+
+.lh-20 {
+  line-height: 20px !important;
+}
+
+.lh-21 {
+  line-height: 21px !important;
+}
+
+.lh-22 {
+  line-height: 22px !important;
+}
+
+.lh-23 {
+  line-height: 23px !important;
+}
+
+.lh-24 {
+  line-height: 24px !important;
+}
+
+.lh-25 {
+  line-height: 25px !important;
+}
+
+.lh-26 {
+  line-height: 26px !important;
+}
+
+.lh-27 {
+  line-height: 27px !important;
+}
+
+.lh-28 {
+  line-height: 28px !important;
+}
+
+.lh-29 {
+  line-height: 29px !important;
+}
+
+.lh-30 {
+  line-height: 30px !important;
+}
+
+.lh-31 {
+  line-height: 31px !important;
+}
+
+.lh-32 {
+  line-height: 32px !important;
+}
+
+.lh-33 {
+  line-height: 33px !important;
+}
+
+.lh-34 {
+  line-height: 34px !important;
+}
+
+.lh-35 {
+  line-height: 35px !important;
+}
+
+.lh-36 {
+  line-height: 36px !important;
+}
+
+.lh-37 {
+  line-height: 37px !important;
+}
+
+.lh-38 {
+  line-height: 38px !important;
+}
+
+.lh-39 {
+  line-height: 39px !important;
+}
+
+.lh-40 {
+  line-height: 40px !important;
+}
+
+.container {
+  max-width: 1366px;
+}
+
+.titleSignIn {
+  font-weight: 700;
+  font-size: 30px;
+  color: #00326B;
+}
+
+.error {
+  color: red;
+  font-style: italic;
+  font-size: 12px;
+}
+/*# sourceMappingURL=globals.css.map */

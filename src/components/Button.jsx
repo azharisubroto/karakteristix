@@ -1,17 +1,31 @@
 import PropTypes from 'prop-types'
 
 /**
- * It will render button component
+ * @category UI
  * @component
- * @example
+ *
+ * @classdesc
+ * ## Import
+ * ```jsx
+ * import Card from '@/components/Button'
+ * ```
+ *
+ * @example <caption>Default.</caption>
  * return (
  *   <Button>My Button</Button>
  * )
+ * @example <caption>Outlined button.</caption>
+ * return (
+ *   <Button variant="outlined">My Button</Button>
+ * )
  */
-const Button = ({ children, variant, background, className, dark, ...other }) => {
+const Button = ({ variant, background, className, dark, ...props }) => {
+  /**
+   * @return {React.ReactElement} - React component
+   */
   return (
-    <button className={`${variant == 'outlined' ? 'outlined' : 'filled'} ${className}`} {...other}>
-      {children}
+    <button className={`${variant == 'outlined' ? 'outlined' : 'filled'} ${className}`} {...props}>
+      {props.children}
       <style jsx>{`
         button {
           color: ${dark ? '#fff' : '#fff'};
@@ -23,6 +37,7 @@ const Button = ({ children, variant, background, className, dark, ...other }) =>
           letter-spacing: 1px;
           padding: 0.75rem 2.5rem;
           border-radius: 90px;
+          cursor: pointer;
 
           &:hover {
             box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.16);

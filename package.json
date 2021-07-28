@@ -8,7 +8,7 @@
     "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production next start",
     "docs": "jsdoc -c jsdoc.json",
-    "docs:build": "NODE_ENV=development parcel build public/docs/entry.js --dist-dir public/docs/build"
+    "docs:build": "jsdoc -c jsdoc.json && NODE_ENV=development parcel build public/docs/entry.js --dist-dir public/docs/build"
   },
   "dependencies": {
     "@emotion/cache": "latest",
@@ -45,6 +45,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-react-display-name": "^7.12.1",
+    "@parcel/transformer-sass": "2.0.0-nightly.778",
     "autoprefixer": "^10.3.1",
     "babel-loader": "^8.2.2",
     "better-docs": "^2.3.2",
@@ -62,5 +63,8 @@
     "styled-jsx-plugin-sass": "^1.0.0"
   },
   "author": "Azhari Subroto <azhari.subroto@gmail.com>",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "alias": {
+    "@/": ""
+  }
 }

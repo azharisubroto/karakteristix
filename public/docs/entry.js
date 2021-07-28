@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
+import '../../src/styles/globals.scss'
 
     window.reactComponents = {};
 
@@ -33,3 +34,9 @@ reactComponents['Button'] = Component0;
 
 import Component1 from '../../src/components/Card.jsx';
 reactComponents['Card'] = Component1;
+
+import Component2 from '../../src/components/ChartCard.jsx';
+reactComponents['ChartCard'] = Component2;
+
+import Component3 from '../../src/components/LoginForm.jsx';
+reactComponents['LoginForm'] = Component3;

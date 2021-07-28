@@ -76,7 +76,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="Button.html">Button</a></li><li><a href="Card.html">Card</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Events</h3><ul><li><a href="LoginForm.html#event:toggleVisiblePassword">toggleVisiblePassword</a></li></ul></div><div class="category"><h2>UI</h2><h3>Components</h3><ul><li><a href="Button.html">Button</a></li><li><a href="Card.html">Card</a></li><li><a href="ChartCard.html">ChartCard</a></li><li><a href="LoginForm.html">LoginForm</a></li></ul></div>
                 
             </nav>
         </div>
@@ -98,74 +98,101 @@ import PropTypes from 'prop-types'
 import MuiCard from '@material-ui/core/Card'
 
 /**
- * Main Card Component
+ * @classdesc
+ * Cards are surfaces that display content and actions on a single topic,
+ * They should be easy to scan for relevant and actionable information.
  *
- * It will render a card component with optional heading text.
+ * ## Import
+ * ```jsx
+ * import Card from '@/components/Card'
+ * ```
+ *
+ * @category UI
  * @component
- * @example
+ * @example &lt;caption>Default&lt;/caption>
  * const text = 'some example text'
  * return (
- *   &lt;Card headerText={text}>The content&lt;/Card>
+ *  &lt;Card headerText={text}>
+ *  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+ *  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+ *  when an unknown printer took a galley of type and scrambled
+ *  &lt;/Card>
  * )
+ *
+ * @example &lt;caption>With Image&lt;/caption>
+ * return (
+ *   &lt;Card headerText="My Image">
+ *     &lt;img src="https://placeimg.com/300/300/any" />
+ *   &lt;/Card>
+ * )
+ * @return {React.ReactElement} - React component
  */
 const Card = (props) => {
   const { headerText, children, ...others } = props
   return (
-    &lt;MuiCard {...others}>
-      {headerText &amp;&amp; (
-        &lt;div className="kx-card-header">
-          &lt;h5>{headerText}&lt;/h5>
-        &lt;/div>
-      )}
+    &lt;div {...others}>
+      &lt;MuiCard>
+        {headerText &amp;&amp; (
+          &lt;div className="kx-card-header">
+            &lt;h5>{headerText}&lt;/h5>
+          &lt;/div>
+        )}
 
-      &lt;div className="kx-card-body">{children}&lt;/div>
+        &lt;div className="kx-card-body">{children}&lt;/div>
 
-      &lt;style jsx>{`
-        .kx-card-header {
-          background-color: initial;
-          border-bottom: 2px solid #f0f0f0;
-          padding: 15px 10px;
-          position: relative;
-          margin: 0 15px;
-
-          h5 {
-            font-size: 24px;
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 700;
-            margin-bottom: 0;
-            color: #707070;
-            padding: 8px 0;
-            display: inline-block;
-            margin-right: 10px;
+        &lt;style jsx>{`
+          .kx-card-header {
+            background-color: initial;
+            border-bottom: 2px solid #f0f0f0;
+            padding: 15px 10px;
             position: relative;
+            margin: 0 15px;
 
-            &amp;:before {
-              content: '';
-              background-color: #00326b;
-              position: absolute;
-              left: -25px;
-              top: 50%;
-              -webkit-transform: translateY(-50%);
-              transform: translateY(-50%);
-              width: 5px;
-              height: 35px;
+            h5 {
+              font-size: 24px;
+              font-family: 'Open Sans', sans-serif;
+              font-weight: 700;
+              margin-bottom: 0;
+              color: #707070;
+              padding: 8px 0;
+              display: inline-block;
+              margin-right: 10px;
+              position: relative;
+
+              &amp;:before {
+                content: '';
+                background-color: #00326b;
+                position: absolute;
+                left: -25px;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+                width: 5px;
+                height: 35px;
+              }
             }
           }
-        }
 
-        .kx-card-body {
-          padding: 15px 25px;
-        }
-      `}&lt;/style>
-    &lt;/MuiCard>
+          .kx-card-body {
+            padding: 15px 25px;
+          }
+        `}&lt;/style>
+      &lt;/MuiCard>
+    &lt;/div>
   )
 }
 
 Card.propTypes = {
-  /** Content of the card. */
+  /**
+   * Content of the card.
+   */
   children: PropTypes.node,
   /** Card title. */
   headerText: PropTypes.string
+}
+
+Card.defaultProps = {
+  headerText: ''
 }
 
 export default Card
@@ -177,16 +204,6 @@ export default Card
 
 
             </div>
-            
-            <footer class="footer">
-                <div class="content has-text-centered">
-                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a></p>
-                    <p class="sidebar-created-by">
-                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
-                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
-                    </p>
-                </div>
-            </footer>
             
         </div>
         <div id="side-nav" class="side-nav">

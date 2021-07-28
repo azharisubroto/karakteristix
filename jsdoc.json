@@ -1,6 +1,6 @@
 {
   "tags": {
-    "allowUnknownTags": ["component"],
+    "allowUnknownTags": ["component", "category"],
     "dictionaries": ["jsdoc", "closure"]
   },
   "source": {
@@ -8,16 +8,18 @@
     "includePattern": "\\.(jsx|js|ts|tsx)$",
     "excludePattern": "(^|\\/|\\\\)_"
   },
-  "plugins": ["plugins/markdown", "better-docs/component"],
+  "plugins": ["plugins/markdown", "better-docs/component", "plugins/summarize", "better-docs/category"],
   "templates": {
-    "cleverLinks": false,
-    "monospaceLinks": false,
+    "cleverLinks": true,
+    "monospaceLinks": true,
     "search": true,
     "better-docs": {
       "name": "Karakteristix Documentation",
+      "hideGenerator": true,
       "component": {
         "entry": [
-          "import 'bootstrap/dist/css/bootstrap-grid.min.css'"
+          "import 'bootstrap/dist/css/bootstrap-grid.min.css'",
+          "import '../../src/styles/globals.scss'"
         ],
         "wrapper": "./src/utils/wrapper-components.js"
       }

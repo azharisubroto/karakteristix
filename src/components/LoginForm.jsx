@@ -5,24 +5,45 @@ import InputLabel from '@material-ui/core/InputLabel'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import Visibility from '@material-ui/icons/Visibility'
 import VisibilityOff from '@material-ui/icons/VisibilityOff'
-import Button from '@/components/Button'
+import Button from './Button'
 import Link from 'next/link'
-import fetchJson from '@/utils/fetchJson'
-import useUser from '@/utils/useUser'
 import { useForm } from 'react-hook-form'
 import { makeStyles } from '@material-ui/styles'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles({
   formControl: {
+    background: '#fff',
     '& input': {
-      padding: '13px 20px'
+      padding: '13px 20px',
+      background: '#fff'
     }
-  }
+  },
+  background: '#fff'
 })
 
+/**
+ * @classdesc
+ * Used for login page
+ *
+ * ## Import
+ * ```jsx
+ * import Card from '@/components/LoginForm'
+ * ```
+ *
+ * @category UI
+ * @component
+ * @example
+ * return (
+ *  <div style={{width: '100%'}}><LoginForm /></div>
+ * )
+ * @return {React.ReactElement} - React component
+ */
 const LoginForm = (props) => {
   const classes = useStyles(props)
   const { register, handleSubmit, errors } = useForm()
+  const router = useRouter()
 
   const [values, setValues] = React.useState({
     email: '',
@@ -34,15 +55,21 @@ const LoginForm = (props) => {
     setValues({ ...values, [prop]: event.target.value })
   }
 
-  const { mutateUser } = useUser({
-    redirectTo: '/dashboard',
-    redirectIfFound: true
-  })
-
   const [errorMsg, setErrorMsg] = useState('')
   const [loading, setLoading] = useState(false)
 
+  /**
+   * @fires LoginForm#toggleVisiblePassword
+   */
   const handleClickShowPassword = () => {
+    /**
+     * @summary An event triggered when user clicked the eye icon on password field
+     *
+     * @event LoginForm#toggleVisiblePassword
+     * @type {boolean}
+     * @property {boolean} showPassword - Indicates whether the password is visible.
+     * @return {boolean}
+     */
     setValues({ ...values, showPassword: !values.showPassword })
   }
 
@@ -51,10 +78,19 @@ const LoginForm = (props) => {
   }
 
   /**
-   * Handle Login
+   * This is a function returning data from the
+   * REST API. It returns a newly created type: {@link Promise.<Object>}
+   *
+   * @method
+   * @param {Object} credential
+   * @param {String} credential.email - user email
+   * @param {String} credential.password - user password
+   *
+   * @return {Promise.<Object>}
+   * @throws {Error}
    */
-  const onSubmit = async (data) => {
-    console.log(data)
+  const onSubmit = async (credential) => {
+    console.log(credential)
     setLoading(true)
 
     const payload = {
@@ -63,15 +99,10 @@ const LoginForm = (props) => {
     }
 
     try {
-      await mutateUser(
-        fetchJson('/api/auth/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        })
-      )
+      await axios.post('/api/auth/login', payload).then(() => {
+        router.push('/dashboard')
+      })
     } catch (error) {
-      //console.error('An unexpected error happened:', error)
       setErrorMsg('Credentials failed, please check your login details again.')
       setLoading(false)
     }
