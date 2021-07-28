@@ -125,7 +125,9 @@ export default Button
 Then in your root folder, run:
 
 ```bash
+yarn docs
 yarn docs:build
 ```
 
 With that command, it will generates your component documentation page.
+And the result can be seen here: http://localhost:3200/docs/Button.html
