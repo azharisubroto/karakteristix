@@ -23,7 +23,12 @@ SECRET_COOKIE_PASSWORD=YOUR_COOKIES_PASSWORD_32_CHARACTERS
 ```
 
 ## Writing code/component documentation
-At the moment, the documentation for KX app is [located here](https://kx-dev.vercel.app/docs/index.html)
+At the moment, the documentation for KX app is [located here](https://kx-dev.vercel.app/docs/index.html).
+The package is using better-docs and jsdoc. You must install jsdoc globally into your system.
+
+```bash
+yarn global add jsdoc
+```
 
 Please follow [this tutorial](https://jsdoc.app/) on how to write a document for your code, hence other developers won't need to dig directly into your code.
 

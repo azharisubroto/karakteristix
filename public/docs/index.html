@@ -125,7 +125,10 @@ API_URL=https://staging.karakteristix.com/backend
 SECRET_COOKIE_PASSWORD=YOUR_COOKIES_PASSWORD_32_CHARACTERS
 </code></pre>
 <h2>Writing code/component documentation</h2>
-<p>At the moment, the documentation for KX app is <a href="https://kx-dev.vercel.app/docs/index.html">located here</a></p>
+<p>At the moment, the documentation for KX app is <a href="https://kx-dev.vercel.app/docs/index.html">located here</a>.
+The package is using better-docs and jsdoc. You must install jsdoc globally into your system.</p>
+<pre class="prettyprint source lang-bash"><code>yarn global add jsdoc
+</code></pre>
 <p>Please follow <a href="https://jsdoc.app/">this tutorial</a> on how to write a document for your code, hence other developers won't need to dig directly into your code.</p>
 <h3>example</h3>
 <pre class="prettyprint source lang-jsx"><code>import PropTypes from 'prop-types'
@@ -221,9 +224,11 @@ Button.propTypes = {
 export default Button
 </code></pre>
 <p>Then in your root folder, run:</p>
-<pre class="prettyprint source lang-bash"><code>yarn docs:build
+<pre class="prettyprint source lang-bash"><code>yarn docs
+yarn docs:build
 </code></pre>
-<p>With that command, it will generates your component documentation page.</p></article>
+<p>With that command, it will generates your component documentation page.
+And the result can be seen here: http://localhost:3200/docs/Button.html</p></article>
     </section>
 
 
